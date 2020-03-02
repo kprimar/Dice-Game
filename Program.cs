@@ -10,7 +10,7 @@ namespace DiceGame
             //NEW GAME START UP
             Introduction();
             ConfirmStart();
-            Console.WriteLine("How many credits do you want to play with?");
+            Console.WriteLine("How many credits do you want to play with?\nEnter a number between 10 and 100.");
             int playerBudget = AskForBudget();
             PlayGame(playerBudget);
 
@@ -31,7 +31,7 @@ namespace DiceGame
             Console.WriteLine("The sum of the die " + totalRoll + ". ");
             int payout = CalculateResult(totalRoll, playerBet);
             playerBudget = playerBudget + payout;
-            Console.WriteLine("\nYou now have $" + playerBudget);
+            Console.WriteLine("\nYou now have " + playerBudget + " credits");
             PlayAgain(playerBudget);
 
 
@@ -81,9 +81,14 @@ namespace DiceGame
                 Console.WriteLine("That's not a number...");
                 budgetInput = Console.ReadLine();
             }
-            if(playerBudget <= 0)
+            if (playerBudget <= 0)
             {
                 Console.WriteLine("You can't have a negative or 0 balance...");
+                AskForBudget();
+            }
+            else if (playerBudget < 10 || playerBudget > 100)
+            {
+                Console.WriteLine("You need to pick a number between 10 and 100.");
                 AskForBudget();
             }
             else
@@ -134,7 +139,7 @@ namespace DiceGame
 
             if (Math.Abs(playerBet-totalRoll) <= 2)
             {
-                Console.WriteLine("Your bet was " + playerBet + ".\nClose!");
+                Console.WriteLine("Your bet was " + playerBet + ". So close!");
                 return payouts[1];
             }
 
