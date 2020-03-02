@@ -10,7 +10,7 @@ namespace DiceGame
             //NEW GAME START UP
             Introduction();
             ConfirmStart();
-            Console.WriteLine("How many credits do you want to play with?\nEnter a number between 10 and 100.");
+            Console.WriteLine("How many credits do you want to start with?\nThe minimum number of credits required to play is 10. Please only bet up to 100 credits.");
             int playerBudget = AskForBudget();
             PlayGame(playerBudget);
 
@@ -30,7 +30,7 @@ namespace DiceGame
             Console.WriteLine("You rolled a " + dieOne + ", " + dieTwo + ", " + dieThree + ", and a " + dieFour + ".");
             Console.WriteLine("The sum of the die " + totalRoll + ". ");
             int payout = CalculateResult(totalRoll, playerBet);
-            playerBudget = playerBudget + payout;
+            playerBudget = (playerBudget + payout);
             Console.WriteLine("\nYou now have " + playerBudget + " credits");
             PlayAgain(playerBudget);
 
@@ -42,11 +42,9 @@ namespace DiceGame
             //GET PLAYER NAME & GIVE INSTRUCTIONS
             Console.WriteLine("Hello! What's your name?");
             string playerName = Console.ReadLine();
-            Console.WriteLine("Welcome to the casino!");
-            Console.WriteLine(playerName +", Would you like to play a game?");
-                       
-            Console.WriteLine("I will roll four dice. If you predict the exact sum of all four, I'll give you 10 credits");
-            Console.WriteLine("If you're off by two or less, I'll give you 5 credits.\nIf you're really off, you owe me 10 credits! \nWhaddaya say?");
+            Console.WriteLine("Welcome to the casino, " + playerName + "! Do you want to play a game?");                       
+            Console.WriteLine("The dice game is simple. I will roll four, six-sided dice, and you guess what the sum of the four dice will be.");
+            Console.WriteLine("If you guess the exact sum of the dice, you'll win 10 more credits.\nIf you're close (+ or - 2) you'll win 5 credits. If you're way off, you lose 10 credits!\nWhaddaya say?");
 
             Console.WriteLine("\nPress Y to say \"Let's do it!\"");
             Console.WriteLine("\nPress N to say \"Ehh, no thanks\"");
