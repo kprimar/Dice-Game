@@ -10,7 +10,15 @@ namespace DiceGame
             //NEW GAME START UP
             Introduction();
             ConfirmStart();
-            Console.WriteLine("How many credits do you want to start with?\nThe minimum number of credits required to play is 10. Please only bet up to 100 credits.");
+
+            Console.WriteLine(@".------..------..------..------..------..------..------.");
+            Console.WriteLine(@"|C.--. ||R.--. ||E.--. ||D.--. ||I.--. ||T.--. ||S.--. |");
+            Console.WriteLine(@"| :/\: || :(): || (\/) || :/\: || (\/) || :/\: || :/\: |");
+            Console.WriteLine(@"| :\/: || ()() || :\/: || (__) || :\/: || (__) || :\/: |");
+            Console.WriteLine(@"| '--'C|| '--'R|| '--'E|| '--'D|| '--'I|| '--'T|| '--'S|");
+            Console.WriteLine(@"`------'`------'`------'`------'`------'`------'`------'");
+
+            Console.WriteLine("\n\nHow many credits do you want to start with?\nThe minimum number of credits required to play is 10. Please only bet up to 100 credits.");
             int playerBudget = AskForBudget();
             PlayGame(playerBudget);
 
@@ -40,14 +48,24 @@ namespace DiceGame
         private static void Introduction()
         {
             //GET PLAYER NAME & GIVE INSTRUCTIONS
-            Console.WriteLine("Hello! What's your name?");
+            Console.WriteLine(@"  $$$$$$\                      $$\                           ");
+            Console.WriteLine(@"$$  __$$\                     \__ |                          ");
+            Console.WriteLine(@"$$ /  \__ | $$$$$$\   $$$$$$$\ $$\ $$$$$$$\   $$$$$$\        ");
+            Console.WriteLine(@"$$ |       \____$$\ $$  _____ |$$ |$$  __$$\ $$  __$$\       ");
+            Console.WriteLine(@"$$ |       $$$$$$$ |\$$$$$$\  $$ |$$ |  $$ |$$ /  $$ |       ");
+            Console.WriteLine(@"$$ |  $$\ $$  __$$ | \____$$\ $$ |$$ |  $$ |$$ |  $$ |       ");
+            Console.WriteLine(@"\$$$$$$  |\$$$$$$$ |$$$$$$$  |$$ |$$ |  $$ |\$$$$$$  |       ");
+            Console.WriteLine(@" \______/  \_______|\_______/ \__|\__|  \__| \______/ _       ");
+            Console.WriteLine("\nHello! What's your name?");
             string playerName = Console.ReadLine();
             Console.WriteLine("Welcome to the casino, " + playerName + "! Do you want to play a game?");                       
-            Console.WriteLine("The dice game is simple. I will roll four, six-sided dice, and you guess what the sum of the four dice will be.");
-            Console.WriteLine("If you guess the exact sum of the dice, you'll win 10 more credits.\nIf you're close (+ or - 2) you'll win 5 credits. If you're way off, you lose 10 credits!\nWhaddaya say?");
+            Console.WriteLine("I will roll four, six-sided dice, and you guess what the sum of the four dice will be.");
+            Console.WriteLine("If your guess is perfect, you'll win 10 credits.\nIf you're close (+ or - 2) you'll win 5 credits. If you're way off, you lose 10 credits!\nWhaddaya say?");
 
             Console.WriteLine("\nPress Y to say \"Let's do it!\"");
             Console.WriteLine("\nPress N to say \"Ehh, no thanks\"");
+
+   
         }
 
         private static void ConfirmStart()
@@ -57,7 +75,7 @@ namespace DiceGame
             {
                 Console.WriteLine("Okay. See ya!");
                 Console.ReadLine();
-                Environment.Exit(-1);
+                Environment.Exit(0);
             }
             else if (response == "Y" || response == "y")
             {
@@ -72,6 +90,7 @@ namespace DiceGame
 
         private static int AskForBudget()
         {
+
             string budgetInput = Console.ReadLine();
             int playerBudget;
             while (!int.TryParse(budgetInput, out playerBudget))
@@ -98,6 +117,7 @@ namespace DiceGame
 
         private static int AskForBet()
         {
+
             string betInput = Console.ReadLine();
             int playerBet;
             while(!int.TryParse(betInput, out playerBet))
@@ -112,6 +132,14 @@ namespace DiceGame
             }
             else
             {
+                Console.WriteLine(@"               (( _______      ");
+                Console.WriteLine(@"     _______     /\O    O\     ");
+                Console.WriteLine(@"    / O    /\   /  \      \    ");
+                Console.WriteLine(@"   /   O  /O \ / O  \O____O\ ))");
+                Console.WriteLine(@"((/_____O/    \\    /O     /   ");
+                Console.WriteLine(@"  \O    O\    / \  /   O  /    ");
+                Console.WriteLine(@"   \O    O\ O/   \/_____O/     ");
+                Console.WriteLine(@"    \O____O\/ ))          ))   ");
                 Console.WriteLine("Here we go!\n.\n.\n.\n.\n.");
             }
             return playerBet;
@@ -126,6 +154,7 @@ namespace DiceGame
 
         private static int CalculateResult(int totalRoll, int playerBet)
         {
+
             int[] payouts = { 10, 5, -10 };
 
             if (playerBet == totalRoll)
@@ -156,7 +185,7 @@ namespace DiceGame
             {
                 Console.WriteLine("Oh! You're out of credits. Come back some other time!");
                 Console.ReadLine();
-                Environment.Exit(-1);
+                return;
             }
 
             Console.WriteLine("\nDo you want to keep playing?");
@@ -165,7 +194,7 @@ namespace DiceGame
             {
                 Console.WriteLine("Okay. See ya!");
                 Console.ReadLine();
-                Environment.Exit(-1);
+                return;
             }
             else if (response == "Y" || response == "y")
             {
